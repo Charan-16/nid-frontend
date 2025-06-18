@@ -1,0 +1,43 @@
+/* 🌄 Page Background */
+
+body {
+  background-image: url('../assets/gallery-bg.jpg'); /* 🔁 You can change path or use external URL */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+/* Optionally darken background under content using a wrapper */
+.container {
+  background-color: rgba(255, 255, 255, 0.9); /* Light glass effect */
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+/* 💼 Project Cards */
+.project-card {
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.project-image-wrapper {
+  overflow: hidden;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.project-image {
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.project-image:hover {
+  transform: scale(1.05);
+}

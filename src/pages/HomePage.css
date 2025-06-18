@@ -1,0 +1,28 @@
+/* src/styles/Home.css */
+
+.hero-overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.hero-text {
+  z-index: 2;
+}
+
+.feature-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 0.75rem;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.department-section h5 {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.department-section p {
+  color: #555;
+}

@@ -1,0 +1,36 @@
+/* src/components/Navbar.css */
+
+.custom-navbar {
+  background-color: rgba(15, 15, 15, 0.95); /* Dark and sleek */
+  padding: 0.8rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Remove any default background from brand and nav links */
+.custom-navbar .navbar-brand,
+.custom-navbar .nav-link {
+  background-color: transparent !important;
+  color: #fff !important;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+.custom-navbar .navbar-brand:hover,
+.custom-navbar .nav-link:hover {
+  color: #00d9ff !important;
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle hover */
+}
+
+.custom-navbar .nav-link.active {
+  color: #00d9ff !important;
+  background-color: rgba(255, 255, 255, 0.1); /* Active highlight */
+}
+
+.nav-item {
+  list-style: none;
+}
