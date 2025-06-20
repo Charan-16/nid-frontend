@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from "react";
-import API from "../api";
-import "./ProjectGallery.css";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import API from '../api'; // ✅ Replaced axios with your configured API
+import './ProjectGallery.css';
+import { useNavigate } from 'react-router-dom';
 
 const departments = [
-  "All Departments",
-  "Interaction Design",
-  "Digital Game Design",
-  "Universal Design",
-  "Center for Bamboo Initiatives",
+  'All Departments',
+  'Interaction Design',
+  'Digital Game Design',
+  'Universal Design',
+  'Center for Bamboo Initiatives',
 ];
 
 function ProjectGallery() {
   const [projects, setProjects] = useState([]);
   const [filtered, setFiltered] = useState([]);
-  const [selectedDept, setSelectedDept] = useState("All Departments");
+  const [selectedDept, setSelectedDept] = useState('All Departments');
   const [onlyInnovative, setOnlyInnovative] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,17 +29,17 @@ function ProjectGallery() {
 
   const fetchProjects = async () => {
     try {
-      const res = await API.get("/api/projects");
+      const res = await API.get('/api/projects'); // ✅ Uses dynamic base URL
       setProjects(res.data);
     } catch (err) {
-      console.error("Error fetching projects:", err);
+      console.error('Error fetching projects:', err);
     }
   };
 
   const filterProjects = () => {
     let result = [...projects];
 
-    if (selectedDept !== "All Departments") {
+    if (selectedDept !== 'All Departments') {
       result = result.filter(
         (p) =>
           p.department?.toLowerCase().trim() ===
@@ -110,7 +110,7 @@ function ProjectGallery() {
             <div
               className="col-md-4 mb-4"
               key={index}
-              style={{ cursor: "pointer" }}
+              style={{ cursor: 'pointer' }}
               onClick={() => navigate(`/project/${project._id}`)}
             >
               <div className="project-card card h-100 shadow-sm">
@@ -126,21 +126,14 @@ function ProjectGallery() {
                 <div className="card-body">
                   <h5 className="card-title">{project.projectTitle}</h5>
                   <p className="card-text">
-                    <strong>Student:</strong> {project.studentName}
-                    <br />
-                    <strong>Coordinator:</strong> {project.coordinatorName}
-                    <br />
-                    <strong>Department:</strong> {project.department}
-                    <br />
-                    <strong>Year:</strong>{" "}
-                    {project.createdAt
-                      ? new Date(project.createdAt).getFullYear()
-                      : "N/A"}
+                    <strong>Student:</strong> {project.studentName}<br />
+                    <strong>Coordinator:</strong> {project.coordinatorName}<br />
+                    <strong>Department:</strong> {project.department}<br />
+                    <strong>Year:</strong>{' '}
+                    {project.createdAt ? new Date(project.createdAt).getFullYear() : 'N/A'}
                   </p>
                   {project.innovative && (
-                    <span className="badge bg-success mt-2">
-                      🌟 Innovative
-                    </span>
+                    <span className="badge bg-success mt-2">🌟 Innovative</span>
                   )}
                 </div>
               </div>

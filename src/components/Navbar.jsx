@@ -1,24 +1,20 @@
-// src/components/Navbar.jsx
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import './Navbar.css'; // 👈 Add a CSS file for styling
+import './Navbar.css';
 
 function Navbar() {
   const location = useLocation();
 
   return (
     <nav className="custom-navbar shadow-sm">
-      <div className="navbar-inner d-flex justify-content-between align-items-center">
-
+      <div className="navbar-inner d-flex justify-content-between align-items-center container">
         <Link className="navbar-brand fw-bold fs-4" to="/">
           🎓 NID Projects
         </Link>
-        <ul className="nav gap-3">
+        <ul className="nav gap-3 m-0">
           <li className="nav-item">
             <Link
-              className={`nav-link ${
-                location.pathname === '/' ? 'active' : ''
-              }`}
+              className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}
               to="/"
             >
               🏠 Home
@@ -26,9 +22,7 @@ function Navbar() {
           </li>
           <li className="nav-item">
             <Link
-              className={`nav-link ${
-                location.pathname === '/projects' ? 'active' : ''
-              }`}
+              className={`nav-link ${location.pathname === '/projects' ? 'active' : ''}`}
               to="/projects"
             >
               📂 Gallery
@@ -36,9 +30,7 @@ function Navbar() {
           </li>
           <li className="nav-item">
             <Link
-              className={`nav-link ${
-                location.pathname === '/add-project' ? 'active' : ''
-              }`}
+              className={`nav-link ${location.pathname === '/add-project' ? 'active' : ''}`}
               to="/add-project"
             >
               ➕ Add Project
