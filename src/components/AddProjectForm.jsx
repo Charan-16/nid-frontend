@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import API from "../api"; // uses baseURL from .env
 import "../ProjectGallery.css";
 
 const AddProjectForm = () => {
@@ -28,10 +28,7 @@ const AddProjectForm = () => {
     setMessage("");
 
     try {
-      const res = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}/api/projects`,
-        formData
-      );
+      const res = await API.post("/api/projects", formData);
       console.log("✅ Project added:", res.data);
       setMessage("✅ Project added successfully!");
       setFormData({
@@ -50,67 +47,81 @@ const AddProjectForm = () => {
   };
 
   return (
-    <div className="form-container">
-      <h2>Add New Project</h2>
-      <form onSubmit={handleSubmit} className="project-form">
-        <input
-          type="text"
-          name="projectTitle"
-          value={formData.projectTitle}
-          onChange={handleChange}
-          placeholder="Project Title"
-          required
-        />
-        <textarea
-          name="description"
-          value={formData.description}
-          onChange={handleChange}
-          placeholder="Project Description"
-          required
-        />
-        <input
-          type="text"
-          name="department"
-          value={formData.department}
-          onChange={handleChange}
-          placeholder="Department"
-          required
-        />
-        <input
-          type="text"
-          name="studentName"
-          value={formData.studentName}
-          onChange={handleChange}
-          placeholder="Student Name"
-          required
-        />
-        <input
-          type="text"
-          name="coordinatorName"
-          value={formData.coordinatorName}
-          onChange={handleChange}
-          placeholder="Coordinator Name"
-          required
-        />
-        <input
-          type="url"
-          name="imageUrl"
-          value={formData.imageUrl}
-          onChange={handleChange}
-          placeholder="Image URL"
-        />
-        <label>
+    <div className="container my-5">
+      <div className="card p-4 shadow-sm">
+        <h2 className="mb-4">Add New Project</h2>
+        <form onSubmit={handleSubmit}>
           <input
-            type="checkbox"
-            name="innovative"
-            checked={formData.innovative}
+            className="form-control mb-3"
+            type="text"
+            name="projectTitle"
+            value={formData.projectTitle}
             onChange={handleChange}
+            placeholder="Project Title"
+            required
           />
-          Innovative Project?
-        </label>
-        <button type="submit">Submit</button>
-      </form>
-      {message && <p className="status-message">{message}</p>}
+          <textarea
+            className="form-control mb-3"
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+            placeholder="Project Description"
+            required
+          />
+          <input
+            className="form-control mb-3"
+            type="text"
+            name="department"
+            value={formData.department}
+            onChange={handleChange}
+            placeholder="Department"
+            required
+          />
+          <input
+            className="form-control mb-3"
+            type="text"
+            name="studentName"
+            value={formData.studentName}
+            onChange={handleChange}
+            placeholder="Student Name"
+            required
+          />
+          <input
+            className="form-control mb-3"
+            type="text"
+            name="coordinatorName"
+            value={formData.coordinatorName}
+            onChange={handleChange}
+            placeholder="Coordinator Name"
+            required
+          />
+          <input
+            className="form-control mb-3"
+            type="url"
+            name="imageUrl"
+            value={formData.imageUrl}
+            onChange={handleChange}
+            placeholder="Image URL"
+          />
+          <div className="form-check mb-3">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              name="innovative"
+              checked={formData.innovative}
+              onChange={handleChange}
+              id="innovativeCheckbox"
+            />
+            <label className="form-check-label" htmlFor="innovativeCheckbox">
+              Innovative Project?
+            </label>
+          </div>
+          <button className="btn btn-primary" type="submit">
+            Submit
+          </button>
+        </form>
+        {message && <p className="mt-3">{message}</p>}
+      </div>
     </div>
   );
 };
